@@ -246,9 +246,15 @@ async function experimentInit() {
   // Достаем дата обджект из эксперимента
   let dataObj = psychoJS._experiment._trialsData;
   // Конвертируем в csv
-  let data = [Object.keys(dataObj[0])].concat(dataObj).map(it => {
-      return Object.values(it).toString()
-  }).join('\n')
+  let data = '';
+  if (dataObj && dataObj.length > 0 && dataObj[0] !== null && dataObj[0] !== undefined) {
+    data = [Object.keys(dataObj[0])].concat(dataObj).map(it => {
+        return Object.values(it).join(',')
+    }).join('\n');
+} else {
+    data = 'participant,trial,response\n'; // Заголовки по умолчанию
+    data += 'no_data,0,no_response'; // Строка-заглушка
+}
   // Отправляем на OSF через DataPipe
   console.log('Saving data...');
   fetch('https://pipe.jspsych.org/api/data', {
@@ -1476,3 +1482,4 @@ async function quitPsychoJS(message, isCompleted) {
   
   return Scheduler.Event.QUIT;
 }
+
