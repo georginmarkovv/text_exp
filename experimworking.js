@@ -157,7 +157,8 @@ async function experimentInit() {
     color: new util.Color('white'),  opacity: undefined,
     depth: 0.0 
   });
-  
+  psychoJS.importConditions('stimuli_block1_exp.xlsx')
+    .then(data => { stimuli_block1_exp = data; });
   key_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "instr"
@@ -1551,3 +1552,4 @@ async function quitPsychoJS(message, isCompleted) {
   
   return Scheduler.Event.QUIT;
 }
+
