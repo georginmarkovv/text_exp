@@ -157,8 +157,7 @@ async function experimentInit() {
     color: new util.Color('white'),  opacity: undefined,
     depth: 0.0 
   });
-  psychoJS.importConditions('stimuli_block1_exp.xlsx')
-    .then(data => { stimuli_block1_exp = data; });
+  
   key_resp = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   // Initialize components for Routine "instr"
@@ -220,11 +219,25 @@ async function experimentInit() {
   background_words = [];
   targets = [];
   
-  let col_target = "targetanimal";
-  
-  for (let row of stimuli_block1_exp) {
-      // targets
-      targets.push(row[col_target]);
+ // Создаем временный загрузчик таблицы
+let tempTrials = new TrialHandler({
+    psychoJS: psychoJS,
+    nReps: 1,
+    method: TrialHandler.Method.SEQUENTIAL,
+    trialList: 'stimuli_block1_exp.xlsx',
+    name: 'tempTrials'
+});
+
+// вытаскиваем весь список строк
+let rows = tempTrials.trialList;
+
+// теперь берем targetanimal со 2 по 91
+let targets = [];
+
+for (let i = 1; i <= 90; i++) {
+    targets.push(rows[i]["targetanimal"]);
+}
+
   
       // background words (row is dict)
       for (let key in row) {
@@ -1552,4 +1565,5 @@ async function quitPsychoJS(message, isCompleted) {
   
   return Scheduler.Event.QUIT;
 }
+
 
