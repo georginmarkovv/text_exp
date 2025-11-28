@@ -36,8 +36,8 @@ const expInfo = {
 //////////////////////////////////////////////////////////////////////////
 // Глобальные переменные (включая те, что были в Python)
 //////////////////////////////////////////////////////////////////////////
-let globalClock = new psychojs.core.Clock();
-let routineTimer = new psychojs.core.Clock();
+const globalClock = new util.Clock();
+const routineTimer = new util.Clock();
 
 let ALL_GRID_POSITIONS = [];
 let ALL_GRID_POSITIONS1 = [];
@@ -687,6 +687,7 @@ async function sendDataToDataPipe({ experimentID = '1aALn2OO9S9P' } = {}) {
     psychoJS.quit({ message: 'Experiment aborted due to error', isCompleted: false });
   }
 })();
+
 
 
 
