@@ -29,7 +29,8 @@ psychoJS.openWindow({
 const expInfo = {
   participant: (Math.floor(Math.random() * 1e6)).toString().padStart(6,'0'),
   session: '001',
-  date: data.getDateStr()
+  date: psychojs.util.getDateStr()
+ 
 };
 
 //////////////////////////////////////////////////////////////////////////
@@ -686,6 +687,7 @@ async function sendDataToDataPipe({ experimentID = '1aALn2OO9S9P' } = {}) {
     psychoJS.quit({ message: 'Experiment aborted due to error', isCompleted: false });
   }
 })();
+
 
 
 
