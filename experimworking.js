@@ -11,12 +11,13 @@
 //////////////////////////////////////////////////////////////////////////
 // Инициализация PsychoJS
 //////////////////////////////////////////////////////////////////////////
-const psychoJS = new PsychoJS({
+const psychoJS = new psychojs.core.PsychoJS({
   debug: true
 });
+
 psychoJS.openWindow({
   fullscr: true,
-  color: new util.Color('black'),
+  color: new psychojs.util.Color('black'),
   units: 'norm'
 });
 
@@ -683,3 +684,4 @@ async function sendDataToDataPipe({ experimentID = '1aALn2OO9S9P' } = {}) {
     psychoJS.quit({ message: 'Experiment aborted due to error', isCompleted: false });
   }
 })();
+
