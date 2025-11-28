@@ -1,25 +1,29 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <title>experiment</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="./lib/psychojs-2025.1.1.css">
-</head>
-<body>
+    <title>Experiment</title>
 
-  <div id="root"></div>
+    <!-- CSS PsychoJS -->
+    <link rel="stylesheet" href="lib/psychojs-2025.1.1.css">
 
-  <!-- CreateJS REQUIRED for PsychoJS -->
-  <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
+    <!-- jQuery UI (required for Resource Manager) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-  <!-- Your experiment (ESM) -->
-  <script type="module" src="./experimworking.js"></script>
+    <!-- PreloadJS (required for createjs) -->
+    <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
 
-  <!-- Fallback for legacy browsers -->
-  <script src="./lib/psychojs-2025.1.1.iife.js" nomodule></script>
-  <script src="./experimworking-legacy-browsers.js" nomodule></script>
+    <!-- PsychoJS *IIFE* MUST BE BEFORE your script -->
+    <script src="lib/psychojs-2025.1.1.iife.js"></script>
+  </head>
 
-</body>
+  <body>
+    <div id="root"></div>
+
+    <!-- Your experiment code (NO module) -->
+    <script src="experimworking.js"></script>
+  </body>
 </html>
