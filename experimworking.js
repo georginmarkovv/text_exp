@@ -11,6 +11,8 @@
 //////////////////////////////////////////////////////////////////////////
 // Инициализация PsychoJS
 //////////////////////////////////////////////////////////////////////////
+import * as psychojs from "./lib/psychojs-2025.1.1.js";
+
 const psychoJS = new psychojs.core.PsychoJS({
   debug: true
 });
@@ -684,5 +686,6 @@ async function sendDataToDataPipe({ experimentID = '1aALn2OO9S9P' } = {}) {
     psychoJS.quit({ message: 'Experiment aborted due to error', isCompleted: false });
   }
 })();
+
 
 
